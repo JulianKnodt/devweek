@@ -1,20 +1,29 @@
 {
-  "name": "devweek",
+  "name": "Purse",
   "version": "1.0.0",
-  "description": "",
+  "description": "A file sharing/selling app for content creators",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js",
+    "compile": "webpack",
+    "watch" : "webpack --watch",
+    "deploy": "git checkout master && ((git add . && git commit -m 'Redeploying...') || true) && git push origin master && (git checkout -b deploy || git checkout deploy) && git reset --hard master && git merge master -m 'Update deployment branch' && webpack --optimize-minimize && (rm -rf client/src || true) && ((git add . && git commit -m 'Minifying...') || true) && git push heroku deploy:master -f && git checkout master && heroku open",
     "commit": "(git add . || true) && (git commit || true) && (git push origin master || true)"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ZolayvarE/devweek.git"
   },
   "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ZolayvarE/devweek/issues"
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "nodemon": "^1.11.0",
+    "path": "^0.12.7",
+    "react": "^15.4.1"
   },
-  "homepage": "https://github.com/ZolayvarE/devweek#readme"
+  "devDependencies": {
+    "babel-core": "^6.20.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "webpack": "^2.2.1"
+  }
 }
