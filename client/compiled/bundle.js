@@ -8347,43 +8347,7 @@ function getIteratorFn(maybeIterable) {
 module.exports = getIteratorFn;
 
 /***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var About = function About() {
-
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h3',
-      null,
-      'About'
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      'This page was coded using React'
-    )
-  );
-};
-
-exports.default = About;
-
-/***/ }),
+/* 72 */,
 /* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12223,9 +12187,9 @@ var _Navbar = __webpack_require__(74);
 
 var _Navbar2 = _interopRequireDefault(_Navbar);
 
-var _About = __webpack_require__(72);
+var _index = __webpack_require__(237);
 
-var _About2 = _interopRequireDefault(_About);
+var _index2 = _interopRequireDefault(_index);
 
 var _Home = __webpack_require__(73);
 
@@ -26762,9 +26726,9 @@ var _Navbar = __webpack_require__(74);
 
 var _Navbar2 = _interopRequireDefault(_Navbar);
 
-var _About = __webpack_require__(72);
+var _index = __webpack_require__(237);
 
-var _About2 = _interopRequireDefault(_About);
+var _index2 = _interopRequireDefault(_index);
 
 var _Home = __webpack_require__(73);
 
@@ -26779,10 +26743,169 @@ _reactDom2.default.render(_react2.default.createElement(
     _reactRouter.Route,
     { path: '/', component: _App2.default },
     _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-    _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default }),
+    _react2.default.createElement(_reactRouter.Route, { path: '/explore', component: _index2.default }),
     _react2.default.createElement(_reactRouter.Route, { path: '*', component: _Home2.default })
   )
 ), document.getElementById('app'));
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ProductList = __webpack_require__(238);
+
+var _ProductList2 = _interopRequireDefault(_ProductList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import Search from '../common/Search.jsx'
+
+var Explore = function (_Component) {
+  _inherits(Explore, _Component);
+
+  function Explore() {
+    _classCallCheck(this, Explore);
+
+    var _this = _possibleConstructorReturn(this, (Explore.__proto__ || Object.getPrototypeOf(Explore)).call(this));
+
+    _this.state = {
+      term: '',
+      filteredProducts: [],
+      products: [{ id: 1, title: 'Good Song', description: 'My good song' }, { id: 2, title: 'Bad Song', description: 'My bad song' }]
+    };
+    return _this;
+  }
+
+  _createClass(Explore, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      // load available files
+    }
+  }, {
+    key: 'onInput',
+    value: function onInput() {
+      // <Search />
+      // update when searching display filtered products
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Explore'
+        ),
+        _react2.default.createElement(_ProductList2.default, { products: this.state.products })
+      );
+    }
+  }]);
+
+  return Explore;
+}(_react.Component);
+
+;
+
+exports.default = Explore;
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ProductListItem = __webpack_require__(239);
+
+var _ProductListItem2 = _interopRequireDefault(_ProductListItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProductList = function ProductList(_ref) {
+  var products = _ref.products;
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    products.map(function (p) {
+      return _react2.default.createElement(_ProductListItem2.default, { key: p.id, product: p });
+    })
+  );
+};
+
+exports.default = ProductList;
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProductListItem = function ProductListItem(_ref) {
+  var product = _ref.product;
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Product Title'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Product Description'
+    ),
+    _react2.default.createElement(
+      'button',
+      null,
+      'purchase'
+    )
+  );
+};
+
+exports.default = ProductListItem;
 
 /***/ })
 /******/ ]);
