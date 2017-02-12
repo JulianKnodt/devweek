@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, IndexRoute, Route, Link, browserHistory } from 'react-router';
-import App from './components/App.jsx';
-import NavBar from './components/Navbar.jsx';
-import Dashboard from './components/Dashboard/index.jsx'
-import Home from './components/Home.jsx';
-import Upload from './components/Upload.jsx';
+import App from './components/App.js';
+import NavBar from './components/Navbar.js';
+import Dashboard from './components/Dashboard/index.js';
+import Home from './components/Home.js';
+import Upload from './components/Upload.js';
 
 
 ReactDOM.render(
