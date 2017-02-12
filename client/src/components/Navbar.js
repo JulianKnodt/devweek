@@ -42,7 +42,9 @@ class NavBar extends React.Component {
 			</nav>
 		) : (
 			<nav className="navbar">
-				<span><h3><i className="fa fa-spinner fa-2x" aria-hidden="true"></i>Purse</h3></span>
+				<span>
+					<h3>PURSE</h3>
+				</span>
 				<Link to='/signin'>
 					<span className="btn">SIGN UP</span>
 				</Link>
