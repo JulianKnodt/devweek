@@ -33,6 +33,10 @@ var uploadFile = (name) => {
   });
 };
 
+var downladFile = () => {
+
+};
+
 module.exports = {
   uploadFile: uploadFile,
   downloadBuffer: client.downloadBuffer.bind(client),
