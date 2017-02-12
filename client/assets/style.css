@@ -162,3 +162,15 @@ button {
   height: 60%;
 }
 
+.upload input {
+  background-color: transparent;
+  margin: 5px;
+  border: 1px solid #34495e;
+  font-size: 1em;
+  color: #34495e;
+}
+
+.upload {
+  width: 350px;
+  height: 350px;
+}

@@ -36,7 +36,7 @@ class NavBar extends React.Component {
 					<i className="fa fa-search fa-2x" aria-hidden="true" />
 				</Link>
 				<span>explore</span>
-				<Link to='/myitems'>
+				<Link to='/collection'>
 					<i className="fa fa-diamond fa-2x" aria-hidden="true" />
 				</Link>
 				<span>collection</span>
