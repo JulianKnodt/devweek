@@ -27,7 +27,10 @@ let uploadStream = (uuid, filename, stream) => {
   const params = {
     Bucket: 'purse-devweek',
     Key: storageName+'.gz',
-    Body: pass
+    Body: pass,
+    Metadata: {
+      name: filename
+    }
   };
   uploader = client.uploadFile(params);
   uploader.on('error', function(err) {
@@ -63,6 +66,7 @@ var uploadFile = (name) => {
 
 module.exports = {
   uploadFile: uploadFile,
+  uploadStream
   downloadBuffer: client.downloadBuffer.bind(client),
   downloadFile: client.downloadFile.bind(client),
   downloadStream: client.downloadStream.bind(client),
