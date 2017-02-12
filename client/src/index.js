@@ -1,10 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Router, IndexRoute, Route, Link, hashHistory } from 'react-router'
-import App from './components/App'
-import NavBar from './components/Navbar'
-import Dashboard from './components/Dashboard/index'
-import Home from './components/Home'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, IndexRoute, Route, Link, hashHistory } from 'react-router';
+import App from './components/App.js';
+import NavBar from './components/Navbar.js';
+import Dashboard from './components/Dashboard/index.js';
+import Home from './components/Home.js';
+import Upload from './components/Upload.js';
+
 
 ReactDOM.render(
 	<Router history={ hashHistory }>
@@ -12,6 +14,7 @@ ReactDOM.render(
 			<IndexRoute component={ Home } />
 			<Route path='/explore' component={ Dashboard } />
 			<Route path='/purse' component={ Dashboard } />
+			<Route path='/upload' component={ Upload } />
 			<Route path='*' component={ Home } />
 		</Route>
 	</Router>,
