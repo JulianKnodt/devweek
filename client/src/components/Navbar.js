@@ -25,8 +25,8 @@ class NavBar extends React.Component {
             <span><h3><i className="fa fa-spinner fa-2x" aria-hidden="true"></i>Purse</h3></span>
             <Link to='/signin'><span className="btn">Sign in</span></Link>
             <Link to='/explore'><span className="btn" onClick={ () => { this.setState({isLogin: !this.state.isLogin}) } }>Log in</span></Link>
-            <span><input placeholder="password"></input></span>
-            <span><input placeholder="username"></input></span>
+            <span><input placeholder="password" /></span>
+            <span><input placeholder="username" /></span>
           </nav>
         </header>
       )
