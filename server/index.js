@@ -18,11 +18,11 @@ app.post('/upload', upload.any(), (req, res) => {
   res.status(201).end()
 })
 
+let retrieveLink = (fileName) => {s3.getPublicUrl('purse-devweek', fileName)};
 app.get('/download', (req, res) => {
-  let link = retrieveLink = () => {req.body/*something*/}
-  let url = 's'//3.retriveBucketUrl
-  res.json({url})
-})
+  let url = retrieveLink(req.query.fileName);
+  res.json({url});
+});
 
 const port = process.env.PORT || 8080
 app.listen(port, function () {

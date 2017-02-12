@@ -15,12 +15,12 @@ const retrieveToken = (who) => {
   return jwt.sign(payload, cert, {algorithm: 'RS256', header});
 };
 
-const addGrantType = (str) => str + '&grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&scope=user%3Aall';
+const addGrantType = (str) => str+'&grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&scope=user%3Aall';
 
 const fetchAccessToken = (email, cb, org='hackathon1') => {
   let token = addGrantType(retrieveToken(email));
   const config = {
-    url: `https://api.asperafiles.com/api/v1/oauth2/${org}/token`,
+    url: 'https://api.asperafiles.com/api/v1/oauth2/'+org+'/token',
     method: 'POST',
     body: '"assertion='+token+'"',
     auth: {
@@ -28,7 +28,7 @@ const fetchAccessToken = (email, cb, org='hackathon1') => {
       pass: 'JPGUcILbQhzW5D4p7-vuIg13VsvrJY0GJuudghdgfj4jumhJMMutIOwtGrvoHNxmDeXWxjaDkVqluamXF5fblFSuWokDDmL1'
     }
   }
-  request(config, cb);
+  console.log(request(config, cb));
 };
 
 fetchAccessToken('julianknodt@gmail.com', (e, r, b) => console.log(b));
