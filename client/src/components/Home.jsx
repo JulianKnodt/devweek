@@ -3,7 +3,7 @@ import React from 'react';
 var Home = () => {
   return (
     <div>
-      This is the homepage!
+      <img className="header-img" src="../assets/landing.jpg"/>
     </div>
   );
 };
