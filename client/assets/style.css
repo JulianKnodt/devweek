@@ -3,36 +3,142 @@ body {
 }
 
 .navbar {
-	width: 100%;
-	height: 50px;
-	background-color: #000;
-	font-size: 1.5em;
+  width: 100%;
+  height: 70px;
+  padding-top: 10px;
+  background-color: #33036b;
+  font-size: 1.3em;
+  opacity: 0.8;
+  position: absolute;
+  top:0;
+  left: 0;
 }
 
 .navbar span {
-	padding: 15px;
-	color: #fff;
-	float: right;
+  margin: 10px;
+  color: #fff;
+  float: right;
+}
 
+.navbar span h3 {
+  position: absolute;
+  left: 20px;
+  top: 0;
+}
+
+.navbar .btn {
+  border: 1px solid #fff;
+  border-radius: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+.navbar input {
+  padding: 5px;
+  height: 20px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+
+.header {
+  color: #fff;
+  font-size: 3em;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .header-img {
-	width: 100%;
-	height: 500px;
+  width: 100%;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.8;
 }
 
 .navbar-side {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 65px;
-	height: 100%;
-	background-color: #000;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 65px;
+  height: 100%;
+  background-color: #33036b;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: 20px;
+  opacity: 0.8;
+}
+
+.navbar-side i {
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .navbar-side span {
-	color: #fff;
+  font-size: 0.8em;
+  color: #fff;
+}
+
+.explore {
+  margin-left: 65px;
+}
+
+.searchbar {
+  width: 70%;
+  height: 40px;
+  align-self: center;
+  border: 3px solid #33036b;
+  border-radius: 10px;
+}
+
+.searchbar .btn {
+ float: right;
+ background-color: #33036b;
+ padding-right: 20px;
+ padding-left: 20px;
+ border-bottom-right-radius: 8px;
+ border-top-right-radius: 8px;
+ height: 40px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: #fff;
+}
+
+.searchbar input {
+  width: 80%;
+  height: 30px;
+}
+
+input {
+    background-color: transparent;
+    border: 0px solid;
+    color: #CCC;
+}
+
+.learnmore {
+  background-color: #33036b;
+  color: #fff;
+  border-radius: 25px;
+  border: 2px solid #fff;
+  height: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 2em;
 }
