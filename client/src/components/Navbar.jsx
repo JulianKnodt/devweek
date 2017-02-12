@@ -8,7 +8,7 @@ var NavBar = (props) => {
         <nav>
           <Link to='/' >Home</Link>
           <span> | </span>
-          <Link to='/about' >About</Link>
+          <Link to='/explore' >Explore</Link>
         </nav>
       </header>
     </div>
