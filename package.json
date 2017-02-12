@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "compile": "webpack",
-    "watch" : "webpack --watch",
+    "watch": "webpack --watch",
     "commit": "(git add . || true) && (git commit || true)"
   },
   "author": "",
@@ -16,7 +16,8 @@
     "express": "^4.14.0",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
-    "react": "^15.4.1"
+    "react": "^15.4.1",
+    "s3": "^4.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.20.0",
