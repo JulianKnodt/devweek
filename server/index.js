@@ -24,7 +24,6 @@ app.get('/view', (req, res) => {
   res.json({url});
 });
 
-const port = process.env.PORT || 8080
 app.get('/download', (req, res) => {
   res.send(s3.downloadBuffer({bucket: 'purse-devweek', key: req.query.fileName}));
 
