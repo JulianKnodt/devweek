@@ -1,14 +1,16 @@
-const parsePath = (path) => {
-  if (path === '/purse') {
+const parsePath = ({location, route}) => {
+  if (route.path === '/purse') {
     return {
       pageTitle: 'My Purse',
-      apiEndpoint: '/api/purse'
+      // query params id: uuid XOR u:username
+      apiEndpoint: `/api/purchased-products${location.search}`
     }
   }
-  else if (path === '/export') {
+  else if (route.path === '/explore') {
     return {
       pageTitle: 'Explore',
-      apiEndpoint: '/api/Explore'
+      // query params: limit
+      apiEndpoint: `/api/products${location.search}`
     }
   }
 }
