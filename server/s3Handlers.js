@@ -1,35 +1,39 @@
 var path = require('path');
-
 var s3 = require('s3');
+var fs = require('fs');
 
 var client = s3.createClient({
   multipartUploadThreshold: 20971520,
   multipartUploadSize: 15728640,
   s3Options: {
-    accessKeyId: "AKIAJ2HSSE6BA3O2DCWQ",
-    secretAccessKey: "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",
+    accessKeyId: 'AKIAJ2HSSE6BA3O2DCWQ',
+    secretAccessKey: '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',
   },
 });
 
-module.exports = client;
+var uploadFile = (name) => {
+  var params = {
+    localFile: path.join(__dirname, './pendingUploads') + '/' + name,
+   
+    s3Params: {
+      Bucket: 'purse-devweek',
+      Key: name,
+    },
+  };
 
-// var params = {
-//   localFile: path.join(__dirname, '../EricsResume.pdf'),
- 
-//   s3Params: {
-//     Bucket: "purse-devweek",
-//     Key: "abc.pdf",
-//   },
-// };
+  var uploader = client.uploadFile(params);
+  uploader.on('error', function(err) {
+    console.error('unable to upload:', err.stack);
+    fs.unlink(path.join(__dirname, './pendingUploads') + '/' + name, () => {});
+  });
 
-// var uploader = client.uploadFile(params);
-// uploader.on('error', function(err) {
-//   console.error("unable to upload:", err.stack);
-// });
-// uploader.on('progress', function() {
-//   console.log("progress", uploader.progressMd5Amount,
-//             uploader.progressAmount, uploader.progressTotal);
-// });
-// uploader.on('end', function() {
-//   console.log("done uploading");
-// });
+  uploader.on('end', function() {
+    console.log(name + ' uploaded');
+    fs.unlink(path.join(__dirname, './pendingUploads') + '/' + name, () => {});
+  });
+};
+
+module.exports = {
+  uploadFile: uploadFile,
+};
+
