@@ -18,13 +18,22 @@ app.post('/upload', upload.any(), (req, res) => {
   res.status(201).end()
 })
 
-app.get('/download', (req, res) => {
-  let link = retrieveLink = () => {req.body/*something*/}
-  let url = 's'//3.retriveBucketUrl
-  res.json({url})
-})
+let retrieveLink = (fileName) => {s3.getPublicUrl('purse-devweek', fileName)};
+app.get('/view', (req, res) => {
+  let url = retrieveLink(req.query.fileName);
+  res.json({url});
+});
 
-const port = process.env.PORT || 8080
+app.get('/download', (req, res) => {
+  res.send(s3.downloadBuffer({bucket: 'purse-devweek', key: req.query.fileName}));
+
+  return;
+  // OR
+
+  s3.downloadBuffer({bucket: 'purse-devweek', key: req.query.fileName}).pipe(res);
+});
+
+const port = process.env.PORT || 8080;
 app.listen(port, function () {
   console.log('Now listening on port:', port)
 })
