@@ -35,5 +35,9 @@ var uploadFile = (name) => {
 
 module.exports = {
   uploadFile: uploadFile,
+  downloadBuffer: client.downloadBuffer.bind(client),
+  downloadFile: client.downloadFile.bind(client),
+  downloadStream: client.downloadStream.bind(client),
+  getPublicUrl: s3.getPublicUrlHttp.bind(s3)
 };
 

@@ -11,30 +11,34 @@ app.use(express.static(path.join(__dirname, '../client')))
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'))
-})
+});
 
 app.post('/upload', upload.any(), (req, res) => {
   var file = req.files[0];
   var destination = path.join(__dirname, './pendingUploads/') + '/' + file.originalname;
   fs.writeFileSync(destination, file.buffer);
   s3.uploadFile(file.originalname);
-})
+});
 
 let retrieveLink = (fileName) => {s3.getPublicUrl('purse-devweek', fileName)};
 
 app.get('/view', (req, res) => {
   let url = retrieveLink(req.query.fileName);
-  res.json({url});
-})
+  if (url) {
+    res.redirect(url);
+  } else {
+    res.status(404).end();
+  }
+});
 
 app.get('/download', (req, res) => {
 
-  res.send(s3.downloadBuffer({bucket: 'purse-devweek', key: req.query.fileName}));
+  // res.send(s3.downloadBuffer({bucket: 'purse-devweek', key: req.query.fileName}));
+  s3.downloadStream({Bucket: 'purse-devweek', Key: req.query.fileName}).pipe(res);
 
   return;
   // OR
 
-  s3.downloadBuffer({bucket: 'purse-devweek', key: req.query.fileName}).pipe(res);
 
 });
 
