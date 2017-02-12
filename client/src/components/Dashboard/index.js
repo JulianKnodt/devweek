@@ -4,8 +4,8 @@ import Search from '../common/Search'
 import parsePath from '../../util'
 
 class Dashboard extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
       term: '',
       filteredProducts: [],
@@ -31,7 +31,7 @@ class Dashboard extends Component {
     this.setState({
       term: val,
       filteredProducts: this.state.products.filter(p=> {
-        return p.title.toLowerCase().indexOf(val.toLowerCase()) !== -1
+        return p.title.toLowerCase().indexOf(val.toLowerCase()) !== -1;
       })
     })
   }
@@ -44,12 +44,12 @@ class Dashboard extends Component {
   }
   render() {
     return (
-      <div>
-        <Search cb={this.inputChangeHandler.bind(this)} />
+      <div className="searchbar">
+        <Search className="searchbar" cb={this.inputChangeHandler.bind(this)} />
         <h3>{this.state.pageTitle}</h3>
         <ProductList products={ this.displayedProducts() }/>
       </div>
-    )
+    );
   }
 }
 
