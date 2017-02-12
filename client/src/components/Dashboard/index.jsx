@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ProductList from '../common/ProductList.jsx'
 import Search from '../common/Search.jsx'
+import parsePath from '../../util'
 
-class Explore extends Component {
+class Dashboard extends Component {
   constructor() {
     super()
     this.state = {
@@ -11,12 +12,18 @@ class Explore extends Component {
       products: [
         {id: 1, title: 'Good Song', description: 'My good song'},
         {id: 2, title: 'Bad Song', description: 'My bad song'},
-      ]
+      ],
+      apiEndpoint: '',
+      pageTitle: ''
     }
+  }
+  componentWillMount() {
+    const { pageTitle, apiEndpoint } = parsePath(this.props.route.path)
+    this.setState({pageTitle, apiEndpoint})
   }
   componentDidMount() {
     // fetch files
-    // fetch('/api/products')
+    // fetch(this.state.apiEndpoint)
     // .then(r => this.setState({products: r.data }))
     // .catch(e => { console.log(e) })
   }
@@ -39,14 +46,11 @@ class Explore extends Component {
     return (
       <div>
         <Search cb={this.inputChangeHandler.bind(this)} />
-        <h3>Explore</h3>
+        <h3>{this.state.pageTitle}</h3>
         <ProductList products={ this.displayedProducts() }/>
       </div>
     )
   }
 };
 
-
-
-export default Explore;
-
+export default Dashboard;
