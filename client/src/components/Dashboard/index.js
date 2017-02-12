@@ -18,14 +18,14 @@ class Dashboard extends Component {
     }
   }
   componentWillMount() {
-    const { pageTitle, apiEndpoint } = parsePath(this.props.route.path);
+    const { pageTitle, apiEndpoint } = parsePath(this.props)
     this.setState({pageTitle, apiEndpoint})
   }
   componentDidMount() {
-    // fetch files
+    // fetch files from server
     // fetch(this.state.apiEndpoint)
-    // .then(r => this.setState({products: r.data }))
-    // .catch(e => { console.log(e) })
+    //   .then(r => this.setState({products: r.data }))
+    //   .catch(e => { console.log(e) })
   }
   inputChangeHandler(val) {
     this.setState({
