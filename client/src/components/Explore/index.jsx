@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ProductList from '../common/ProductList.jsx'
-import Search from './Search.jsx'
+import Search from '../common/Search.jsx'
 
 class Explore extends Component {
   constructor() {
@@ -38,7 +38,7 @@ class Explore extends Component {
   render() {
     return (
       <div>
-        <Search onType={this.inputChangeHandler.bind(this)} />
+        <Search cb={this.inputChangeHandler.bind(this)} />
         <h3>Explore</h3>
         <ProductList products={ this.displayedProducts() }/>
       </div>

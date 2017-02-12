@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Search = ({onType}) => {
+const Search = ({cb}) => {
   return (
     <input 
       type='text' 
-      onChange={ ({target}) => { onType(target.value) } }
+      onChange={ ({target}) => { cb(target.value) } }
       placeholder='Search products'
     />
   )
