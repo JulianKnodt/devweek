@@ -2,7 +2,7 @@ import React from 'react'
 
 const Search = ({cb}) => {
   return (
-    <div>
+    <div className="searchbar">
     <input 
       type='text' 
       onChange={ ({target}) => { cb(target.value) } }
