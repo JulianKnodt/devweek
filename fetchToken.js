@@ -19,19 +19,16 @@ const addGrantType = (str) => str + '&grant_type=urn%3Aietf%3Aparams%3Aoauth%3Ag
 
 const fetchAccessToken = (email, cb, org='hackathon1') => {
   let token = addGrantType(retrieveToken(email));
-  request.post(`https://api.asperafiles.com/api/v1/oauth2/${org}/token`, {
-    json: true,
-    header: {
-      "content-type": 'application/json'
-    },
+  const config = {
+    url: `https://api.asperafiles.com/api/v1/oauth2/${org}/token`,
+    method: 'POST',
+    body: '"assertion='+token+'"',
     auth: {
       user: 'SP2weaOMA',
       pass: 'JPGUcILbQhzW5D4p7-vuIg13VsvrJY0GJuudghdgfj4jumhJMMutIOwtGrvoHNxmDeXWxjaDkVqluamXF5fblFSuWokDDmL1'
     }
-  })
-  .form({assertion: token}).on('response', r => {
-    cb(r.toJSON());
-  });
+  }
+  request(config, cb);
 };
 
-fetchAccessToken('julianknodt@gmail.com', console.log);
+fetchAccessToken('julianknodt@gmail.com', (e, r, b) => console.log(b));
