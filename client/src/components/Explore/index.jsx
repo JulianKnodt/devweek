@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductList from '../common/ProductList.jsx'
+// import Search from '../common/Search.jsx'
 
 class Explore extends Component {
   constructor() {
@@ -17,13 +18,13 @@ class Explore extends Component {
     // load available files
   }
   onInput() {
+        // <Search />
     // update when searching display filtered products
   }
   render() {
     return (
       <div>
         <h3>Explore</h3>
-        <Search />
         <ProductList products={ this.state.products }/>
       </div>
     )
