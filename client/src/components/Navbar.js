@@ -40,6 +40,10 @@ class NavBar extends React.Component {
 					<i className="fa fa-diamond fa-2x" aria-hidden="true" />
 				</Link>
 				<span>my gems</span>
+        <Link to='/upload'>
+          <i className="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
+        </Link>
+        <span>upload</span>
 			</nav>
 		) : (
 			<nav className="navbar">

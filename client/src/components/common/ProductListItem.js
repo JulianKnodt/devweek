@@ -1,10 +1,15 @@
 import React from 'react'
 
 const ProductListItem = ({product}) => {
+  var divStyle = {
+    backgroundImage: 'url(' + product.image + ')',
+    backgroundSize: 'cover'
+  }
   return (
     <div className="product">
-      <h4>Product Title</h4>
-      <p>Product Description</p>
+      <div className="product-img" style={divStyle}></div>
+      <h4>{product.title}</h4>
+      <p>{product.description}</p>
       <button>Barter</button>
       <button>Purchase</button>
     </div>
