@@ -1,2 +1,5 @@
 node_modules
 client/compiled/bundle.js
+key.pem
+private_key.pem
+
