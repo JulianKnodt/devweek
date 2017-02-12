@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, IndexRoute, Route, Link, browserHistory } from 'react-router';
+import { Router, IndexRoute, Route, Link, hashHistory } from 'react-router';
 import App from './components/App.js';
 import NavBar from './components/Navbar.js';
 import Dashboard from './components/Dashboard/index.js';
