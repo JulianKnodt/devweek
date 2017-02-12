@@ -14,8 +14,11 @@ class Explore extends Component {
       ]
     }
   }
-  componentWillMount() {
-    // load available files
+  componentDidMount() {
+    // fetch files
+    // fetch('/api/products')
+    // .then(r => this.setState({products: r.data }))
+    // .catch(e => { console.log(e) })
   }
   inputChangeHandler(val) {
     this.setState({
