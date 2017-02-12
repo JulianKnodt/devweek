@@ -1,15 +1,33 @@
-import React from 'react';
-import Products from './Products.jsx'
+import React, { Component } from 'react';
+import ProductList from '../common/ProductList.jsx'
 
-var Explore = () => {
-
-  return (
-    <div>
-      <h3>Explore</h3>
-      <p>This page was coded using React</p>
-      <Products />
-    </div>
-  );
+class Explore extends Component {
+  constructor() {
+    super()
+    this.state = {
+      term: '',
+      filteredProducts: [],
+      products: [
+        {id: 1, title: 'Good Song', description: 'My good song'},
+        {id: 2, title: 'Bad Song', description: 'My bad song'},
+      ]
+    }
+  }
+  componentWillMount() {
+    // load available files
+  }
+  onInput() {
+    // update when searching display filtered products
+  }
+  render() {
+    return (
+      <div>
+        <h3>Explore</h3>
+        <Search />
+        <ProductList products={ this.state.products }/>
+      </div>
+    )
+  }
 };
 
 
