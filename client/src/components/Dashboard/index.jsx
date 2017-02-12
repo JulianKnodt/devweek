@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import ProductList from '../common/ProductList.jsx'
-import Search from '../common/Search.jsx'
-import parsePath from '../../util'
+import ProductList from '../common/ProductList.jsx';
+import Search from '../common/Search.jsx';
+import parsePath from '../../util';
 
 class Dashboard extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
       term: '',
       filteredProducts: [],
@@ -18,7 +18,7 @@ class Dashboard extends Component {
     }
   }
   componentWillMount() {
-    const { pageTitle, apiEndpoint } = parsePath(this.props.route.path)
+    const { pageTitle, apiEndpoint } = parsePath(this.props.route.path);
     this.setState({pageTitle, apiEndpoint})
   }
   componentDidMount() {
@@ -31,7 +31,7 @@ class Dashboard extends Component {
     this.setState({
       term: val,
       filteredProducts: this.state.products.filter(p=> {
-        return p.title.toLowerCase().indexOf(val.toLowerCase()) !== -1
+        return p.title.toLowerCase().indexOf(val.toLowerCase()) !== -1;
       })
     })
   }
@@ -44,13 +44,13 @@ class Dashboard extends Component {
   }
   render() {
     return (
-      <div>
-        <Search cb={this.inputChangeHandler.bind(this)} />
+      <div className="searchbar">
+        <Search className="searchbar" cb={this.inputChangeHandler.bind(this)} />
         <h3>{this.state.pageTitle}</h3>
         <ProductList products={ this.displayedProducts() }/>
       </div>
-    )
+    );
   }
-};
+}
 
 export default Dashboard;
