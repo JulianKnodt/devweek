@@ -44,10 +44,10 @@ class NavBar extends React.Component {
 			<nav className="navbar">
 				<span><h3><i className="fa fa-spinner fa-2x" aria-hidden="true"></i>Purse</h3></span>
 				<Link to='/signin'>
-					<span className="btn">Sign in</span>
+					<span className="btn">SIGN UP</span>
 				</Link>
 				<Link to='/explore'>
-					<span className="btn" onClick={this.getUser}>Log in</span>
+					<span className="btn" onClick={this.getUser}>LOG IN</span>
 				</Link>
 				<span><input placeholder="password" type="text" value={this.state.username} onChange={this.handleChange} /></span>
 				<span><input placeholder="username" /></span>
