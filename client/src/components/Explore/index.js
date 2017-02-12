@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import ProductList from '../common/ProductList.jsx'
-// import Search from '../common/Search.jsx'
+import React, { Component } from 'react'
+import ProductList from '../common/ProductList'
+// import Search from '../common/Search'
 
 class Explore extends Component {
   constructor() {
@@ -32,9 +32,9 @@ class Explore extends Component {
       </div>
     )
   }
-};
+}
 
 
 
-export default Explore;
+export default Explore
 

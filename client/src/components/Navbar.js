@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React from 'react'
+import { Link } from 'react-router'
 
 class NavBar extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       isLogin: false
-    };
+    }
   }
 
   render() {
@@ -24,18 +24,18 @@ class NavBar extends React.Component {
           <nav className="navbar">
             <span><h3><i className="fa fa-spinner fa-2x" aria-hidden="true"></i>Purse</h3></span>
             <Link to='/signin'><span className="btn">Sign in</span></Link>
-            <Link to='/explore'><span className="btn" onClick={ () => { this.setState({isLogin: !this.state.isLogin}); } }>Log in</span></Link>
+            <Link to='/explore'><span className="btn" onClick={ () => { this.setState({isLogin: !this.state.isLogin}) } }>Log in</span></Link>
             <span><input placeholder="password"></input></span>
             <span><input placeholder="username"></input></span>
           </nav>
         </header>
-      );
+      )
     return (
       <div>
         {header}
       </div>
-    );
+    )
   }
 }
 
-export default NavBar;
+export default NavBar
