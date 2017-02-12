@@ -1,8 +1,6 @@
-var path = require('path');
+const s3 = require('s3');
 
-var s3 = require('s3');
-
-var client = s3.createClient({
+let client = s3.createClient({
   multipartUploadThreshold: 20971520,
   multipartUploadSize: 15728640,
   s3Options: {
