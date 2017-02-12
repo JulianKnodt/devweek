@@ -9,19 +9,14 @@ import Upload from './components/Upload.js';
 
 
 ReactDOM.render(
-
-  <Router history={ browserHistory }>
-    <Route path='/' component={ App }>
-      <IndexRoute component={ Home } />
-      <Route path='/explore' component={ Dashboard } />
-      <Route path='/purse' component={ Dashboard } />
-      <Route path='/upload' component={ Upload } />
-      <Route path='*' component={ Home } />
-    </Route>
-  </Router>
-
-, document.getElementById('app'));
-
-
-
-
+	<Router history={ hashHistory }>
+		<Route path='/' component={ App }>
+			<IndexRoute component={ Home } />
+			<Route path='/explore' component={ Dashboard } />
+			<Route path='/purse' component={ Dashboard } />
+			<Route path='/upload' component={ Upload } />
+			<Route path='*' component={ Home } />
+		</Route>
+	</Router>,
+	document.getElementById('app')
+)
