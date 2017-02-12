@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import ProductList from '../common/ProductList.jsx'
-import Search from '../common/Search.jsx'
+import React, { Component } from 'react'
+import ProductList from '../common/ProductList'
+import Search from '../common/Search'
 import parsePath from '../../util'
 
 class Dashboard extends Component {
@@ -51,6 +51,6 @@ class Dashboard extends Component {
       </div>
     )
   }
-};
+}
 
-export default Dashboard;
+export default Dashboard

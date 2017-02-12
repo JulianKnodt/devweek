@@ -5,7 +5,7 @@ const parsePath = (path) => {
       apiEndpoint: '/api/purse'
     }
   }
-  else if (path === '/export') {
+  else if (path === '/explore') {
     return {
       pageTitle: 'Explore',
       apiEndpoint: '/api/Explore'
