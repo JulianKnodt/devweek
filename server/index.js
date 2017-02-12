@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const upload = require('multer')();
 const app = express();
+const s3 = require('./s3Handlers.js');
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client')));
