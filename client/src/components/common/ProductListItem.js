@@ -1,6 +1,7 @@
 import React from 'react'
+import Barter from '../Barter.js'
 
-const ProductListItem = ({product}) => {
+const ProductListItem = ({product, handleBarter}) => {
   var divStyle = {
     backgroundImage: 'url(' + product.image + ')',
     backgroundSize: 'cover'
@@ -9,8 +10,8 @@ const ProductListItem = ({product}) => {
     <div className="product">
       <div className="product-img" style={divStyle}></div>
       <h4>{product.title}</h4>
-      <p>{product.description}</p>
-      <button>Barter</button>
+      <p>@{product.username}</p>
+      <button onClick={() => handleBarter()} handleBarter={handleBarter}>Barter</button>
       <button>Purchase</button>
     </div>
   )
