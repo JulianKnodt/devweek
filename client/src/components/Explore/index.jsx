@@ -23,8 +23,11 @@ class Explore extends Component {
   }
   render() {
     return (
-      <div>
-        <h3>Explore</h3>
+      <div className="explore">
+        <h3>Share, Collborate, Barter</h3>
+        <div className="searchbar">
+        <input placeholder="what are you looking for?"></input><span className="btn">Search</span>
+        </div>
         <ProductList products={ this.state.products }/>
       </div>
     )
