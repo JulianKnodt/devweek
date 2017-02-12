@@ -3,6 +3,7 @@ const s3 = require('s3');
 const fs = require('fs');
 const stream = require('stream');
 const zlib = require('zlib');
+const mime = require('mime');
 
 var client = s3.createClient({
   multipartUploadThreshold: 20971520,
@@ -21,16 +22,18 @@ const rename = (uuid, filename) => {
 
 let zip = stream => zlib.gzip(stream);
 
-let uploadStream = (uuid, filename, stream) => {
+let uploadStream = (uuid, filename, buffer) => {
+  console.log(buffer);
   let storageName = rename(uuid, filename);
   let pass = new stream.PassThrough();
   const params = {
     Bucket: 'purse-devweek',
-    Key: storageName+'.gz',
+    Key: storageName,//+'.gz',
     Body: pass,
-    Metadata: {
-      name: filename
-    }
+    ContentType: mime.lookup(storageName)
+    // Metadata: {
+    //   name: filename
+    // }
   };
   uploader = client.uploadFile(params);
   uploader.on('error', function(err) {
@@ -39,7 +42,8 @@ let uploadStream = (uuid, filename, stream) => {
   uploader.on('end', function() {
     console.log(storageName, 'uploaded');
   });
-  return zip(stream).pipe(pass);
+  //zip()
+  return pass.end(buffer);
 }
 
 var uploadFile = (name) => {
@@ -70,7 +74,7 @@ var downladFile = () => {
 
 module.exports = {
   uploadFile: uploadFile,
-  uploadStream
+  uploadStream,
   downloadBuffer: client.downloadBuffer.bind(client),
   downloadFile: client.downloadFile.bind(client),
   downloadStream: client.downloadStream.bind(client),

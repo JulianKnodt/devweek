@@ -33,17 +33,7 @@ app.get('/view', (req, res) => {
 })
 
 app.get('/download', (req, res) => {
-  request('https:purse-devweek.herokuapp.com/api/products', (error, pgRes, body) => {
-    let selectedProduct, key;
-    for (var i = 0; i < body.length; i++) {
-      if (product.title === req.query.fileName) {
-        key = product.key;
-        break;
-      }
-    };
-    // // res.send(s3.downloadBuffer({bucket: 'purse-devweek', key: req.query.fileName}))
-    s3.downloadStream({Bucket: 'purse-devweek', Key: key}).pipe(res)
-  });
+  s3.downloadStream({Bucket: 'purse-devweek', Key: req.query.fileName}).pipe(res)
 })
 
 app.get('*', (req, res) => {
