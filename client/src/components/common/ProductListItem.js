@@ -2,12 +2,13 @@ import React from 'react'
 
 const ProductListItem = ({product}) => {
   return (
-    <div>
+    <div className="product">
       <h4>Product Title</h4>
       <p>Product Description</p>
-      <button>purchase</button>
+      <button>Barter</button>
+      <button>Purchase</button>
     </div>
   )
 }
 
-export default ProductListItem
+export default ProductListItem;
