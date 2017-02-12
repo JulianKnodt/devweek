@@ -18,18 +18,26 @@ class Explore extends Component {
     // load available files
   }
   inputChangeHandler(val) {
-    console.log('val:', val)
-    // update when searching display filtered products
+    this.setState({
+      term: val,
+      filteredProducts: this.state.products.filter(p=> {
+        return p.title.toLowerCase().indexOf(val.toLowerCase()) !== -1
+      })
+    })
   }
   displayedProducts() {
-    
+    const filterOn = this.state.term.length
+    if (filterOn) {
+      return this.state.filteredProducts
+    }
+    return this.state.products
   }
   render() {
     return (
       <div>
         <Search onType={this.inputChangeHandler.bind(this)} />
         <h3>Explore</h3>
-        <ProductList products={ this.state.products }/>
+        <ProductList products={ this.displayedProducts() }/>
       </div>
     )
   }
