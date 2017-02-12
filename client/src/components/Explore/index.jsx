@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductList from '../common/ProductList.jsx'
+import Search from '../common/Search.jsx'
 
 class Explore extends Component {
   constructor() {
