@@ -15,6 +15,7 @@ class NavBar extends React.Component {
 	}
 
 	getUser() {
+		this.setState({isLogin: true});
 		axios.get('/user?id=' + this.state.username)
 			.then(function() {
 				this.setState({isLogin: true});
