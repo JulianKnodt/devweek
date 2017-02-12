@@ -12,9 +12,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-app.post('/upload', upload.any() (req, res) => {
+app.post('/upload', upload.any(), (req, res) => {
   let files = req.files;
   //S3 stuff in here
+  res.status(201).end();
 });
 
 app.get('/download', (req, res) => {
