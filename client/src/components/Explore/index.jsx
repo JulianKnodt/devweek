@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ProductList from '../common/ProductList.jsx'
-// import Search from '../common/Search.jsx'
+import Search from './Search.jsx'
 
 class Explore extends Component {
   constructor() {
@@ -17,13 +17,17 @@ class Explore extends Component {
   componentWillMount() {
     // load available files
   }
-  onInput() {
-        // <Search />
+  inputChangeHandler(val) {
+    console.log('val:', val)
     // update when searching display filtered products
+  }
+  displayedProducts() {
+    
   }
   render() {
     return (
       <div>
+        <Search onType={this.inputChangeHandler.bind(this)} />
         <h3>Explore</h3>
         <ProductList products={ this.state.products }/>
       </div>
