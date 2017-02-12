@@ -39,7 +39,7 @@ class NavBar extends React.Component {
 				<Link to='/myitems'>
 					<i className="fa fa-diamond fa-2x" aria-hidden="true" />
 				</Link>
-				<span>my gems</span>
+				<span>collection</span>
         <Link to='/upload'>
           <i className="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
         </Link>

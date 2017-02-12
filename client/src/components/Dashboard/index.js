@@ -15,7 +15,8 @@ class Dashboard extends Component {
         {id: 3, title: 'inermis', description: 'Wisi paulo nostrud an per, ut tractatos voluptatum constituam sea.', image: 'http://learningthreejs.com/data/2015-09-24-learning-three-dot-js-news-number-15-creative-3d-demos-of-the-week/screenshots/mapzen.jpg'}
       ],
       apiEndpoint: '',
-      pageTitle: ''
+      pageTitle: '',
+      username: 'Julian'
     }
   }
   componentWillMount() {
@@ -45,7 +46,8 @@ class Dashboard extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
+        <h1>Hi, {this.state.username}!</h1>
         <Search className="searchbar" cb={this.inputChangeHandler.bind(this)} />
         <h3>{this.state.pageTitle}</h3>
         <ProductList products={ this.displayedProducts() }/>
