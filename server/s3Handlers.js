@@ -1,6 +1,9 @@
-var path = require('path');
-var s3 = require('s3');
-var fs = require('fs');
+const path = require('path');
+const s3 = require('s3');
+const fs = require('fs');
+const stream = require('stream');
+const zlib = require('zlib');
+const mime = require('mime');
 
 var client = s3.createClient({
   multipartUploadThreshold: 20971520,
@@ -10,6 +13,38 @@ var client = s3.createClient({
     secretAccessKey: 'QBdx2U9s7aPZn/oYPiBf6vy7JHcp32fiu+YQeRZ4',
   },
 });
+
+const last = arr => arr[arr.length -1];
+const rename = (uuid, filename) => {
+  let parts = filename.startsWith('.') ? [filename.slice(1)] : filename.split('.');
+  return uuid + '.' + (parts.length > 1 ? last(parts) : parts[0]);
+}
+
+let zip = stream => zlib.gzip(stream);
+
+let uploadStream = (uuid, filename, buffer) => {
+  console.log(buffer);
+  let storageName = rename(uuid, filename);
+  let pass = new stream.PassThrough();
+  const params = {
+    Bucket: 'purse-devweek',
+    Key: storageName,//+'.gz',
+    Body: pass,
+    ContentType: mime.lookup(storageName)
+    // Metadata: {
+    //   name: filename
+    // }
+  };
+  uploader = client.uploadFile(params);
+  uploader.on('error', function(err) {
+    console.error('unable to upload:', err.stack);
+  });
+  uploader.on('end', function() {
+    console.log(storageName, 'uploaded');
+  });
+  //zip()
+  return pass.end(buffer);
+}
 
 var uploadFile = (name) => {
   var params = {
@@ -33,8 +68,13 @@ var uploadFile = (name) => {
   });
 };
 
+var downladFile = () => {
+
+};
+
 module.exports = {
   uploadFile: uploadFile,
+  uploadStream,
   downloadBuffer: client.downloadBuffer.bind(client),
   downloadFile: client.downloadFile.bind(client),
   downloadStream: client.downloadStream.bind(client),

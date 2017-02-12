@@ -27,13 +27,12 @@ class Dashboard extends Component {
     this.setState({pageTitle, apiEndpoint})
   }
   componentDidMount() {
-    // fetch files from server
-    // fetch('http://devweek-purse.herokuapp.com' + this.state.apiEndpoint)
-    //   .then(r => {
-    //     console.log('r================>',r)
-    //     this.setState({products: r.data })
-    //   })
-    //   .catch(e => { console.log(e) })
+
+    fetch('http://devweek-purse.herokuapp.com/api/products')
+      .then(r => r.json())
+      .then(r => this.setState({products: r }) )
+      .catch(e => { console.log(e) })
+
   }
   inputChangeHandler(val) {
     this.setState({
